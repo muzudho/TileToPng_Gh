@@ -1,0 +1,10 @@
+E:\Muzudho\CSharp\TileToPng\bin\TileToPng.exe.config
+E:\Muzudho\CSharp\TileToPng\bin\TileToPng.exe
+E:\Muzudho\CSharp\TileToPng\bin\TileToPng.pdb
+E:\Muzudho\CSharp\TileToPng\TileToPng\obj\Debug\TileToPng.csproj.GenerateResource.Cache
+E:\Muzudho\CSharp\TileToPng\TileToPng\obj\Debug\TileToPng.exe
+E:\Muzudho\CSharp\TileToPng\TileToPng\obj\Debug\TileToPng.pdb
+E:\Muzudho\CSharp\TileToPng\TileToPng\obj\Debug\Grayscale.TileToPng.Form1.resources
+E:\Muzudho\CSharp\TileToPng\TileToPng\obj\Debug\Grayscale.TileToPng.Properties.Resources.resources
+E:\Muzudho\CSharp\TileToPng\TileToPng\obj\Debug\Grayscale.TileToPng.UcMain.resources
+E:\Muzudho\CSharp\TileToPng\TileToPng\obj\Debug\TileToPng.csprojResolveAssemblyReference.cache
