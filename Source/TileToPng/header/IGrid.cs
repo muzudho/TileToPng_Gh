@@ -2,7 +2,7 @@
 
 namespace Grayscale.TileToPng
 {
-    public interface Grid
+    public interface IGrid
     {
 
         float Ox { get; set; }

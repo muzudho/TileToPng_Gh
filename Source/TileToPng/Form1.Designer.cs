@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Grayscale.TileToPng.n200____menu____.MenubarImpl menubarImpl1 = new Grayscale.TileToPng.n200____menu____.MenubarImpl();
+            Grayscale.TileToPng.n100____cmdline_.MarginImpl marginImpl1 = new Grayscale.TileToPng.n100____cmdline_.MarginImpl();
             this.ucMain1 = new Grayscale.TileToPng.UcMain();
             this.ucCommandline1 = new Grayscale.TileToPng.UcCommandline();
             this.SuspendLayout();
@@ -37,7 +39,16 @@
             this.ucMain1.AllowDrop = true;
             this.ucMain1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ucMain1.Location = new System.Drawing.Point(0, 0);
+            menubarImpl1.Bounds = new System.Drawing.Rectangle(0, 0, 0, 0);
+            this.ucMain1.Menubar = menubarImpl1;
             this.ucMain1.Name = "ucMain1";
+            this.ucMain1.Selection = ((long)(0));
+            marginImpl1.East = 0;
+            marginImpl1.North = 0;
+            marginImpl1.South = 0;
+            marginImpl1.West = 0;
+            this.ucMain1.SelectionMargin = marginImpl1;
+            this.ucMain1.SelectionScanOrder = Grayscale.TileToPng.n___100_cmdline_.ScanOrder.None;
             this.ucMain1.Size = new System.Drawing.Size(550, 373);
             this.ucMain1.TabIndex = 0;
             // 
@@ -58,6 +69,7 @@
             this.Controls.Add(this.ucMain1);
             this.Name = "Form1";
             this.Text = "TileToPng";
+            this.Resize += new System.EventHandler(this.Form1_Resize);
             this.ResumeLayout(false);
 
         }

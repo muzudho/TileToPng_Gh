@@ -27,5 +27,10 @@ namespace Grayscale.TileToPng
             MessageBox.Show("デバッグ binary=" + binary + " scanOrder=" + commandline.GetScanOrder() + " margin=" + commandline.GetMargin().ToString());
             this.Refresh();
         }
+
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            this.ucMain1.OnSizeUpdated();
+        }
     }
 }

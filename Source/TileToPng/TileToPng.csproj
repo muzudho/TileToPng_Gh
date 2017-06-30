@@ -48,6 +48,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="KopiLua">
+      <HintPath>..\..\NLua.NoPInvoke\net45\KopiLua.dll</HintPath>
+    </Reference>
+    <Reference Include="NLua">
+      <HintPath>..\..\NLua.NoPInvoke\net45\NLua.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,16 +73,28 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="options\IEngineOption.cs" />
+    <Compile Include="options\EngineOptionNames.cs" />
+    <Compile Include="options\IEngineOptions.cs" />
     <Compile Include="header\n___100_cmdline_\Commandline.cs" />
-    <Compile Include="header\Grid.cs" />
+    <Compile Include="header\IGrid.cs" />
     <Compile Include="header\n___100_cmdline_\Margin.cs" />
     <Compile Include="header\n___100_cmdline_\ScanOrder.cs" />
+    <Compile Include="header\n___200_menu____\CursorMode.cs" />
+    <Compile Include="header\n___200_menu____\Menubar.cs" />
+    <Compile Include="header\n___300_mouse___\MouseOperation.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="options\EngineOptionsImpl.cs" />
+    <Compile Include="options\EngineOption_BoolImpl.cs" />
+    <Compile Include="options\EngineOption_NumberImpl.cs" />
+    <Compile Include="options\EngineOption_StringImpl.cs" />
     <Compile Include="source\n100____cmdline_\CommandlineImpl.cs" />
     <Compile Include="source\GridImpl.cs" />
     <Compile Include="source\n100____cmdline_\MarginImpl.cs" />
     <Compile Include="source\n100____cmdline_\UtilCommandlineParser.cs" />
+    <Compile Include="source\n200____menu____\MenubarImpl.cs" />
+    <Compile Include="source\n300____mouse___\MouseOperationImpl.cs" />
     <Compile Include="UcCommandline.cs">
       <SubType>UserControl</SubType>
     </Compile>

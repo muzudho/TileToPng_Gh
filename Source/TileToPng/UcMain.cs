@@ -5,6 +5,9 @@ using System.Text;
 using System.IO;
 using Grayscale.TileToPng.n___100_cmdline_;
 using Grayscale.TileToPng.n100____cmdline_;
+using Grayscale.TileToPng.n___200_menu____;
+using Grayscale.TileToPng.n200____menu____;
+using Grayscale.TileToPng.options;
 
 namespace Grayscale.TileToPng
 {
@@ -14,6 +17,13 @@ namespace Grayscale.TileToPng
         {
             InitializeComponent();
         }
+
+        #region プロパティー
+
+        /// <summary>
+        /// 設定。
+        /// </summary>
+        private IEngineOptions m_engineOptions;
 
         /// <summary>
         /// 金色のペン。
@@ -39,7 +49,7 @@ namespace Grayscale.TileToPng
         /// <summary>
         /// グリッド
         /// </summary>
-        private Grid m_grid_;
+        private IGrid m_grid_;
         /// <summary>
         /// ファイル名のテーブル。
         /// </summary>
@@ -104,8 +114,25 @@ namespace Grayscale.TileToPng
             set { this.m_brushSelectionTranslucent_ = value; }
         }
 
+        /// <summary>
+        /// 自作メニュー・バー
+        /// </summary>
+        private Menubar m_menubar_;
+        public Menubar Menubar
+        {
+            get { return this.m_menubar_; }
+            set { this.m_menubar_ = value; }
+        }
+
+        #endregion
+
         private void UcMain_Load(object sender, EventArgs e)
         {
+            //────────────────────────────────────────
+            // 設定
+            //────────────────────────────────────────
+            this.m_engineOptions = new EngineOptionsImpl();
+
             //────────────────────────────────────────
             // ペンとブラシ
             //────────────────────────────────────────
@@ -122,8 +149,8 @@ namespace Grayscale.TileToPng
                 60.0f,
                 40.0f,
                 // セルのサイズ
-                40.0f,
-                40.0f
+                Program.tileWidth,// 40.0f,
+                Program.tileHeight// 40.0f
                 );
 
             // リサイザー（リサイズ用のつまみ）は、グリッドの右下に付く。
@@ -188,6 +215,12 @@ namespace Grayscale.TileToPng
                     20
                     );
             }
+
+            //────────────────────────────────────────
+            // メニュー・バー
+            //────────────────────────────────────────
+            this.m_menubar_ = new MenubarImpl(0,0,10,20, this.Font);
+            this.OnSizeUpdated();
         }
 
 
@@ -208,6 +241,11 @@ namespace Grayscale.TileToPng
             this.m_cursor_.Height = this.m_grid_.CellH;
         }
 
+        /// <summary>
+        /// 描画
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void UcMain_Paint(object sender, PaintEventArgs e)
         {
             Graphics g = e.Graphics;
@@ -294,6 +332,11 @@ namespace Grayscale.TileToPng
             {
                 g.DrawEllipse(this.m_penGold_, this.m_resizer_);
             }
+
+            //────────────────────────────────────────
+            // メニュー・バー
+            //────────────────────────────────────────
+            this.Menubar.Paint(g);
         }
 
         private void PaintSelection(Graphics g, bool isWriteCase)
@@ -520,6 +563,15 @@ namespace Grayscale.TileToPng
             }
 
             //────────────────────────────────────────
+            // メニュー・バー
+            //────────────────────────────────────────
+            if (this.Menubar.OnMouseLeftDown(e.Location))
+            {
+                isRefresh = true;
+                goto gt_Refresh;
+            }
+
+            //────────────────────────────────────────
             // レイヤー関連（編集レイヤー・ラジオボタン）
             //────────────────────────────────────────
             for (int iLayer = 0; iLayer < UcMain.GRID_MAX_LAYER; iLayer++)
@@ -554,6 +606,7 @@ namespace Grayscale.TileToPng
                 isRefresh = true;
             }
 
+            gt_Refresh:
             if (isRefresh)
             {
                 this.Refresh();
@@ -827,6 +880,16 @@ namespace Grayscale.TileToPng
             string file = Path.Combine(Application.StartupPath, "TileToPng_save.txt");
             File.WriteAllText(file,sb.ToString());
         }
-        
+
+        /// <summary>
+        /// ウィンドウ・サイズ変更時
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        public void OnSizeUpdated()
+        {
+            // メニュー・バー
+            this.m_menubar_.UpdateSize(this.Width);
+        }
     }
 }
